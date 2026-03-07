@@ -16,7 +16,7 @@ public class HbUtility {
 		Configuration cfg = new Configuration();
 		Properties p = new Properties();
 		p.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-		p.put(Environment.URL, "jdbc:mysql:/localost:3306/ProductWebAppdb?createDatabaseIfNotExist=true");
+		p.put(Environment.URL, "jdbc:mysql://localhost:3306/ProductWebAppdb?createDatabaseIfNotExist=true");
 		p.put(Environment.USER, "root");
 		p.put(Environment.PASS, "Your_password");
 		p.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
@@ -31,3 +31,4 @@ public class HbUtility {
 		sessionFactory = cfg.buildSessionFactory();
 	}
 }
+
