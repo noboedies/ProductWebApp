@@ -43,8 +43,15 @@ public class UserHome extends HttpServlet {
 			out.print("<h1>ProductApp</h1>");
 			out.print("<hr>");
 			out.print("Welcome: <b> "+user.getName()+" </b> ");
-			out.print("<a href='Logout'>Logout</a>");
+			out.print("&nbsp;&nbsp;<a href='UserHome'>Home</a>");
+			out.print("&nbsp;&nbsp;<a href='AllProduct'>AllProduct</a>");
+			out.print("&nbsp;&nbsp;<a href='Logout'>Logout</a>");
 			out.print("<hr>");
+			String msg = (String)httpSession.getAttribute("msg");
+			if(msg != null) {
+				out.print("<p>"+msg+"</p><hr>");
+				httpSession.setAttribute("msg", null);
+			}
 			out.print("<form action=\"AddProduct\" method=\"post\" enctype=\"multipart/form-data\">\r\n"
 					+ "		<label>Name:</label>\r\n"
 					+ "		<input type='text' name='name' required /> <br><br>\r\n"
