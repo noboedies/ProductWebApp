@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 
 import com.tausif.HbUtility;
 import com.tausif.entity.Product;
+import com.tausif.entity.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -42,6 +43,7 @@ public class AddProduct extends HttpServlet {
 		if(httpSession == null) {
 			response.sendRedirect("session_error.html");
 		}else {
+			User user =(User)httpSession.getAttribute("User");
 			Part p1 = request.getPart("cImage");
 			Part p2 = request.getPart("ctn");
 			
@@ -73,23 +75,19 @@ public class AddProduct extends HttpServlet {
 				    p.setDescription(description);
 				    p.setImage(image);
 				    p.setContent(content);
+				    p.setUser(user);
 				    ses.persist(p);
 				    transaction.commit();
 				    ses.close();
-				    response.sendRedirect("success.html");
-				    
-					
+				    httpSession.setAttribute("msg", "Product Added successfully!");
 				} else {
-					response.sendRedirect("Exist.html");
+					httpSession.setAttribute("msg", "Product Already Exist");
 				}
+				response.sendRedirect("UserHome");
 			}
 		}
 		
-		
-		
-		
-		
-		
+			
 	}
 
 }
