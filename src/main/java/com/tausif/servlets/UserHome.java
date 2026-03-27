@@ -40,12 +40,13 @@ public class UserHome extends HttpServlet {
 			out.print("<!DOCTYPE html>");
 			out.print("<html>");
 			out.print("<body>");
-			out.print("<h1>ProductApp</h1>");
+			out.print("<h1>ProductWebApp</h1>");
 			out.print("<hr>");
 			out.print("Welcome: <b> "+user.getName()+" </b> ");
 			out.print("&nbsp;&nbsp;<a href='UserHome'>Home</a>");
 			out.print("&nbsp;&nbsp;<a href='AllProduct'>AllProduct</a>");
 			out.print("&nbsp;&nbsp;<a href='Logout'>Logout</a>");
+			out.print("&nbsp;&nbsp;<a href='DeleteUser?email="+user.getId()+"'>Delete Profile</a>");
 			out.print("<hr>");
 			String msg = (String)httpSession.getAttribute("msg");
 			if(msg != null) {
